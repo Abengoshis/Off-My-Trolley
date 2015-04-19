@@ -8,6 +8,6 @@ public class scrTrolleyWheels : MonoBehaviour
 	void Update ()
 	{
 		foreach (GameObject wheel in Wheels)
-			wheel.transform.rotation = Quaternion.RotateTowards(wheel.transform.rotation, Quaternion.Euler(hingeJoint.axis * hingeJoint.motor.targetVelocity), 180 * Time.deltaTime);
+			wheel.transform.rotation = Quaternion.RotateTowards(wheel.transform.rotation, Quaternion.Euler(hingeJoint.axis * hingeJoint.motor.targetVelocity + transform.eulerAngles), 180 * Time.deltaTime);
 	}
 }

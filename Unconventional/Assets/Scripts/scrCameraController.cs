@@ -36,7 +36,7 @@ public class scrCameraController : MonoBehaviour
 
 	void MoveOrbit()
 	{
-		orbitYaw += Input.GetAxis("LookHorizontal") * orbitSpeed;
+		orbitYaw += Input.GetAxis("Rotate Camera") * orbitSpeed;
 		if (orbitYaw >= 360)
 			orbitYaw -= 360;
 		else if (orbitYaw < 0)

@@ -32,8 +32,20 @@ Material:
         first:
           name: _Stagger
         second: 60
+      data:
+        first:
+          name: _Shininess
+        second: 1
+      data:
+        first:
+          name: _Rim
+        second: 1
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .948529422, g: .948529422, b: .948529422, a: 1}
+        second: {r: .889705896, g: .885013759, b: .876621962, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .889705896, g: .868049741, b: .811202407, a: 1}

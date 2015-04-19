@@ -10,4 +10,15 @@ public class scrWeapon : MonoBehaviour
 	{
 		Debug.Log ("Weapon [" + name + "] used.");
 	}
+
+	// The weapon can only damage enemies when it is a trigger (which happens when it is attached to the trolley).
+	void OnTriggerEnter(Collider other)
+	{
+		if (ContactDamage != 0 && other.transform.root.GetComponent<scrEnemy>() != null)
+		{
+			scrEnemy enemy = other.transform.root.GetComponent<scrEnemy>();
+
+			enemy.Damage(ContactDamage, other.ClosestPointOnBounds(transform.position));
+		}
+	}
 }

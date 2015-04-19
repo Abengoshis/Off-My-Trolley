@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Cube9_defaultMat
-  m_Shader: {fileID: 4800000, guid: 98ca2bc8db300434795642fd4ab55107, type: 3}
+  m_Shader: {fileID: 4800000, guid: ccd806a204b41f14b92624a960a9fbb5, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -27,13 +27,36 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Stagger
         second: 60
+      data:
+        first:
+          name: _Shininess
+        second: 1
+      data:
+        first:
+          name: _Rim
+        second: 1
     m_Colors:
       data:
         first:
           name: _Color
-        second: {r: .800000012, g: .800000012, b: .800000012, a: 1}
+        second: {r: .154411793, g: .154411793, b: .154411793, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .683823526, g: .672726989, b: .643598616, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: .845588207, g: .845588207, b: .845588207, a: .501960814}

@@ -26,7 +26,7 @@ public class scrCameraController : MonoBehaviour
 	
 	}
 
-	void Update ()
+	void FixedUpdate ()
 	{
 		if (Mode == MovementMode.Orbit)
 		{
@@ -44,12 +44,12 @@ public class scrCameraController : MonoBehaviour
 
 		// Orbit position.
 		targetPosition = OrbitFocus.transform.position + new Vector3(orbitDistance * Mathf.Sin (orbitYaw * Mathf.Deg2Rad), 2.7f, orbitDistance * Mathf.Cos(orbitYaw * Mathf.Deg2Rad));
-		transform.position = targetPosition;
+		transform.position = Vector3.Lerp (transform.position, targetPosition, 0.1f);
 
 		// Rotate to face centre.
 		//targetRotation.SetLookRotation(new Vector3(OrbitFocus.transform.position.x - transform.position.x, 0.0f, OrbitFocus.transform.position.z - transform.position.z));
 		targetRotation.eulerAngles = new Vector3(15.0f, orbitYaw + 180, 0.0f);
-		transform.rotation = targetRotation;
+		transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, 0.1f);
 
 	}
 

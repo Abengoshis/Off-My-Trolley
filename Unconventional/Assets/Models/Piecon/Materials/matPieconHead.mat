@@ -44,6 +44,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Stagger
+        second: 15
+      data:
+        first:
           name: _Shininess
         second: 1
       data:
@@ -52,17 +56,21 @@ Material:
         second: .00499999989
       data:
         first:
-          name: _Stagger
-        second: 15
+          name: _Rim
+        second: 1
+      data:
+        first:
+          name: _Frequency
+        second: 23.8999996
+      data:
+        first:
+          name: _Amplitude
+        second: .0500000007
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: .890196085, g: .811764717, b: .709803939, a: 1}
-      data:
-        first:
-          name: _Emission
-        second: {r: 1, g: 1, b: 1, a: 0}
       data:
         first:
           name: _SpecColor
@@ -71,3 +79,7 @@ Material:
         first:
           name: _ReflectColor
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: 1, g: 1, b: 1, a: 0}

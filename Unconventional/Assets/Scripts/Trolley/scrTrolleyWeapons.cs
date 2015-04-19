@@ -29,9 +29,13 @@ public class scrTrolleyWeapons : MonoBehaviour
 			this.attachment = attachment;
 			attachment.transform.parent = Anchor.transform;
 			attachment.transform.localPosition = new Vector3(0.02f, 0.02f, 0.02f);
-			attachment.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, Random.Range (0.0f, 360.0f));
+			attachment.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, Random.Range (-15.0f, 15.0f));
 			attachment.rigidbody.isKinematic = true;
+			attachment.collider.isTrigger = true;
+
 			attachment.gameObject.layer = Anchor.layer;
+			foreach (Transform t in attachment.gameObject.GetComponentsInChildren<Transform>())
+				t.gameObject.layer = Anchor.layer;
 		}
 
 		public void Detach()
@@ -41,9 +45,13 @@ public class scrTrolleyWeapons : MonoBehaviour
 			{
 				attachment.transform.parent = null;
 				attachment.rigidbody.isKinematic = false;
-				attachment.gameObject.layer = LayerMask.NameToLayer("Weapon");
-
+				attachment.collider.isTrigger = false;
 				attachment.rigidbody.AddForce(Anchor.transform.forward * 3, ForceMode.Impulse);
+
+				LayerMask layer = LayerMask.NameToLayer("Weapon");
+				attachment.gameObject.layer = layer;
+				foreach (Transform t in attachment.gameObject.GetComponentsInChildren<Transform>())
+					t.gameObject.layer = layer;
 			}
 		}
 

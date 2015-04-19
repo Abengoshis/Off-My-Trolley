@@ -37,6 +37,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Stagger
+        second: 15
+      data:
+        first:
           name: _Shininess
         second: .078125
       data:
@@ -45,8 +49,16 @@ Material:
         second: .0799999982
       data:
         first:
-          name: _Stagger
-        second: 15
+          name: _Rim
+        second: 1
+      data:
+        first:
+          name: _Frequency
+        second: 6
+      data:
+        first:
+          name: _Amplitude
+        second: -.0399999991
     m_Colors:
       data:
         first:

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-// Generic hitscan gun.
+// Generic raycast gun class.
 public class scrGun : scrWeapon
 {
 	const float MUZZLE_FLASH_DURATION = 0.05f;
@@ -9,6 +9,8 @@ public class scrGun : scrWeapon
 	
 	public float FireRate;	// Shots per second.
 	private bool firing = false;
+
+	public float BulletDamage;
 
 	public override void Use ()
 	{
@@ -20,7 +22,25 @@ public class scrGun : scrWeapon
 
 	IEnumerator Fire()
 	{
-		// Hitscan.
+		// Raycast.
+		RaycastHit hit;
+		if (Physics.Raycast (MuzzleFlash.transform.position, transform.forward, out hit, 1000, ~(1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Trolley"))))
+		{
+			// Make a tracer line.
+
+			if (hit.transform.root.GetComponent<scrEnemy>())
+			{
+				// Make a fleshy splat.
+
+				scrEnemy enemy = hit.transform.root.GetComponent<scrEnemy>();
+				enemy.Damage(BulletDamage, hit.point);
+			}
+			else
+			{
+				// Make a dusty poof.
+
+			}
+		}
 
 		// Enable the muzzle flash.
 		MuzzleFlash.SetActive(true);
@@ -50,7 +70,7 @@ public class scrGun : scrWeapon
 		// Hide the muzzle flash.
 		MuzzleFlash.SetActive(false);
 
-		yield return new WaitForSeconds(1.0f / FireRate - MUZZLE_FLASH_DURATION);
+		yield return new WaitForSeconds(1.0f / FireRate - MUZZLE_FLASH_DURATION + Random.Range (0.01f, 0.1f));
 
 		firing = false;
 	}

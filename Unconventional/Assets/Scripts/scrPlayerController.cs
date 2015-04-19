@@ -3,12 +3,9 @@ using System.Collections;
 
 public class scrPlayerController : MonoBehaviour
 {
-
 	private Vector3 targetDirection;
-	private float moveSpeed = 5.0f;
-	private float rotateSpeed = 1040.0f;
-
-	public GameObject Trolley;
+	private float moveSpeed = 3.0f;
+	private float turnSpeed = 1040.0f;
 
 	void Awake ()
 	{
@@ -35,18 +32,20 @@ public class scrPlayerController : MonoBehaviour
 
 	void Move()
 	{
-		HingeJoint joint = Trolley.hingeJoint;
-		JointMotor motor = Trolley.hingeJoint.motor;
+		GameObject trolley = scrGameManager.Instance.Trolley;
+		HingeJoint joint = trolley.hingeJoint;
+		JointMotor motor = trolley.hingeJoint.motor;
 
 		// Rotate to face the new direction.
 		if (targetDirection.magnitude != 0)
 		{
-			rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), rotateSpeed * Time.fixedDeltaTime));
+			rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(targetDirection), turnSpeed * Time.fixedDeltaTime));
 			rigidbody.MovePosition(transform.position + targetDirection * moveSpeed * targetDirection.magnitude * Time.fixedDeltaTime);
 
+
 			// Add influence to trolley.
-			motor.force = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), new Vector2(Trolley.transform.forward.x, Trolley.transform.forward.z)) * 10;
-			motor.targetVelocity = Vector2.Dot(new Vector2(transform.forward.x, transform.forward.z), new Vector2(Trolley.transform.right.x, Trolley.transform.right.z)) * motor.force;
+			motor.force = Vector2.Angle(new Vector2(transform.forward.x, transform.forward.z), new Vector2(trolley.transform.forward.x, trolley.transform.forward.z)) * 10;
+			motor.targetVelocity = Vector2.Dot(new Vector2(transform.forward.x, transform.forward.z), new Vector2(trolley.transform.right.x, trolley.transform.right.z)) * motor.force;
 			joint.motor = motor;
 		}
 		else
